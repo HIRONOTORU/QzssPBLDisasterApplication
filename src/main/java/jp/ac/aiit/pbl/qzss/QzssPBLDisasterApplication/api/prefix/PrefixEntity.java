@@ -1,22 +1,21 @@
 package jp.ac.aiit.pbl.qzss.QzssPBLDisasterApplication.api.prefix;
 
 import jp.ac.aiit.pbl.disaster.prefix.Prefix;
-import org.seasar.doma.Entity;
-import org.seasar.doma.Id;
+import org.seasar.doma.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "PREFIXES")
 public class PrefixEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prefixId;
 
     private String preamble;
 
     private String messageType;
-
-    private String reportClassification;
 
     private String disasterCategory;
 
@@ -31,11 +30,10 @@ public class PrefixEntity {
     public PrefixEntity(Prefix prefix){
         this.preamble = prefix.getPreamble().getId();
         this.messageType = prefix.getMessageType().getMessageTypeString();
-        this.reportClassification = prefix.getReportClassification().name();
         this.disasterCategory = prefix.getDisasterCategory().name();
         this.reportTime = prefix.getReportTime();
         this.informationType = prefix.getInformationType().name();
-        this.spare1 = prefix.getSpare1();
+        this.spare1 = prefix.getSpare1().substring(0,8);
     }
 
     public Long getPrefixId() {
@@ -62,13 +60,6 @@ public class PrefixEntity {
         this.messageType = messageType;
     }
 
-    public String getReportClassification() {
-        return reportClassification;
-    }
-
-    public void setReportClassification(String reportClassification) {
-        this.reportClassification = reportClassification;
-    }
 
     public String getDisasterCategory() {
         return disasterCategory;

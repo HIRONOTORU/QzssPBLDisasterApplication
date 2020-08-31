@@ -5,6 +5,7 @@ import jp.ac.aiit.pbl.disaster.Disaster;
 import jp.ac.aiit.pbl.disaster.prefix.Prefix;
 import jp.ac.aiit.pbl.disaster.prefix.PrefixParser;
 import jp.ac.aiit.pbl.qzss.QzssPBLDisasterApplication.api.prefix.PrefixEntity;
+import jp.ac.aiit.pbl.qzss.QzssPBLDisasterApplication.api.prefix.PrefixRepository;
 import jp.ac.aiit.pbl.qzss.QzssPBLDisasterApplication.api.prefix.PrefixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ public class DisasterController {
     @Autowired
     PrefixService prefixService;
 
+    @Autowired
+    PrefixRepository prefixRepository;
+
 
     @GetMapping("/disaster")
     public Disaster decode(@RequestParam("qzqsmdata") String qzqsm){
@@ -28,7 +32,7 @@ public class DisasterController {
     public void register(@RequestParam("qzqsmdata") String qzqsm){
         QZQSMDecoder qzqsmDecoder = new QZQSMDecoder();
         Disaster disaster = qzqsmDecoder.decode(qzqsm);
-        PrefixService prefixService = new PrefixService();
-        prefixService.create(new PrefixEntity(disaster.getDisasterPrefix()));
+        System.out.println(disaster.getDisasterPrefix().toString());
+        prefixRepository.create(new PrefixEntity(disaster.getDisasterPrefix()));
     }
 }
