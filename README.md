@@ -1,0 +1,2 @@
+# QzssPBLDisasterApplication
+PBL前期成果発表会用のアプリケーション
