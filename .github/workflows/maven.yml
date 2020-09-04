@@ -25,7 +25,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Build with Maven Wrappe 
-      run: mvnw.cmd package
+      run: mvnw package
       
     - uses: actions/upload-artifact@v2
       with:
