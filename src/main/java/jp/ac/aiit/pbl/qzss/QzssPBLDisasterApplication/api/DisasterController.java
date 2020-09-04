@@ -1,5 +1,6 @@
 package jp.ac.aiit.pbl.qzss.QzssPBLDisasterApplication.api;
 
+import java.util.List;
 import jp.ac.aiit.pbl.QZQSMDecoder;
 import jp.ac.aiit.pbl.disaster.Disaster;
 import jp.ac.aiit.pbl.disaster.prefix.Prefix;
@@ -26,6 +27,11 @@ public class DisasterController {
     public Disaster decode(@RequestParam("qzqsmdata") String qzqsm){
         QZQSMDecoder qzqsmDecoder = new QZQSMDecoder();
         return qzqsmDecoder.decode(qzqsm);
+    }
+
+    @GetMapping("/prefixTop30")
+    public List<PrefixEntity> PrefixTop30(){
+        return prefixRepository.findTop30();
     }
 
     @GetMapping("/prefix")

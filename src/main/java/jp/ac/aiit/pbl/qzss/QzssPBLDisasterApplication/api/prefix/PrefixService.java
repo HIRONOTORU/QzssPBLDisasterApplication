@@ -16,6 +16,10 @@ public class PrefixService {
         return prefixRepository.findAll();
     }
 
+    public List<PrefixEntity> findTop30(){
+        return prefixRepository.findTop30();
+    }
+
     public void create(PrefixEntity prefixEntity){
         prefixRepository.create(prefixEntity);
     }

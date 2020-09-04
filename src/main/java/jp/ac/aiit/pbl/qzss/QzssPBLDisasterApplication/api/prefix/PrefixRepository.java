@@ -18,6 +18,9 @@ public interface PrefixRepository {
     @Select
     public List<PrefixEntity> findAll();
 
+    @Select
+    public List<PrefixEntity> findTop30();
+
     @Insert
     @Transactional
     public int create(PrefixEntity entity);
