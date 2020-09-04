@@ -35,7 +35,7 @@ jobs:
 #  deploy:
     - name: make keyfile
       env:
-        SECRET_KEY: ${{ secrets.GITHUBACTIONSTEST }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: echo "$SECRET_KEY" > keyfile && chmod 600 keyfile
 
     - name: scp artifact to EC2
