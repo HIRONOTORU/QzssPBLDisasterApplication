@@ -24,8 +24,9 @@ jobs:
 #      run: mvn -B test --file pom.xml
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Build with Maven Wrappe 
-      run: ${basedir}/mvnw package
+    - name: Build with Maven Wrappe
+
+      run: ./mvnw package
       
     - uses: actions/upload-artifact@v2
       with:
