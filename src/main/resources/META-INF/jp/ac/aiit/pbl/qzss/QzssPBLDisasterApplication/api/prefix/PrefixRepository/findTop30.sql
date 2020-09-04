@@ -1,1 +1,1 @@
-SELECT * FROM PREFIXES Order by reporttime desc limit 30
+SELECT * FROM PREFIXES Order by prefixid desc limit 30
